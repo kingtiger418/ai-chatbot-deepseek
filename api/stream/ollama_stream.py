@@ -57,7 +57,7 @@ def stream_text_usingollama(messages: List[ChatCompletionMessageParam], protocol
     )
 
     for chunk in stream:
-        print(chunk)
+        #print(chunk)
         if chunk.message:
             yield '0:{text}\n'.format(text=json.dumps(chunk.message.content))
             continue
@@ -127,6 +127,7 @@ def stream_text_usingollama(messages: List[ChatCompletionMessageParam], protocol
             )
 
 async def get_ollama_stream_instance(messages, protocol):
+    #print("message: " + str(messages))
     ollama_messages = convert_to_ollama_messages(messages)
     response = StreamingResponse(stream_text_usingollama(ollama_messages, protocol))
     return response

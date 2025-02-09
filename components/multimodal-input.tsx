@@ -21,9 +21,9 @@ import { Textarea } from "./ui/textarea";
 
 const suggestedActions = [
   {
-    title: "What is the weather",
-    label: "in San Francisco?",
-    action: "What is the weather in San Francisco?",
+    title: "What is the advantage",
+    label: "of DeepSeek",
+    action: "What is the advantage of DeepSeek?",
   },
   {
     title: "How is python useful",

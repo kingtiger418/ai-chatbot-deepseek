@@ -5,7 +5,6 @@ from ..utils.instance import ClientMessage
 
 def convert_to_ollama_messages(messages: List[ClientMessage]) -> List[ChatCompletionMessageParam]:
     ollama_messages = []
-
     for message in messages:
         parts = []
         tool_calls = []
