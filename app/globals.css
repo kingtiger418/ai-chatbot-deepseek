@@ -89,6 +89,9 @@
         --chart-3: 30 80% 55%;
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
+
+        --primary-color: #CDFF00;
+        --secondary-color: #2A3177;
     }
 }
 
@@ -183,18 +186,18 @@
 
 @keyframes glow-1 {
     0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.15;
+        transform: translate(-50%, 50%) scale(1);
+        opacity: 0.1;
     }
 
     50% {
-        transform: translate(50%, 20%) scale(1.2);
-        opacity: 0.2;
+        transform: translate(-50%, 50%) scale(0.8);
+        opacity: 0.15;
     }
 
     100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.15;
+        transform: translate(-50%, 50%) scale(1);
+        opacity: 0.1;
     }
 }
 
@@ -234,8 +237,8 @@
 
 .animate-glow-1 {
     animation: glow-1 15s ease-in-out infinite;
-    left: 25%;
-    top: 25%;
+    left: 0%;
+    bottom: 0%;
 }
 
 .animate-glow-2 {
@@ -248,4 +251,24 @@
     animation: glow-3 20s ease-in-out infinite;
     right: 40%;
     top: 40%;
+}
+
+.box-animated-border {
+    border: 1px solid #0000;
+    border-radius: 12px;
+    background: linear-gradient(#1A1A1A, #1A1A1A) padding-box, linear-gradient(var(--angle),
+            var(--primary-color), var(--secondary-color)) border-box;
+    animation: 4s rotate linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
 }

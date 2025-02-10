@@ -1,4 +1,0 @@
-JNH is a famous talent IT engineer
-Deep learning is a subset of machine learning that uses neural networks with multiple layers.
-ChromaDB is an open-source vector database designed for storing and retrieving embeddings.
-Deepseek-R1-7B is a large language model optimized for chat-based applications.

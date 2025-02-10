@@ -3,7 +3,7 @@
 import type { Message } from "ai";
 import { motion } from "framer-motion";
 
-import { SparklesIcon } from "./icons";
+import { OmaxIcon } from "./icons";
 import { Markdown } from "./markdown";
 import { PreviewAttachment } from "./preview-attachment";
 import { cn } from "@/lib/utils";
@@ -29,13 +29,13 @@ export const PreviewMessage = ({
           "group-data-[role=user]/message:bg-primary group-data-[role=user]/message:text-primary-foreground flex gap-4 group-data-[role=user]/message:px-3 w-full group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:py-3 rounded-xl",
         )}
       >
-        {/* {message.role === "assistant" && (
+        {message.role === "assistant" && (
           <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
-            <SparklesIcon size={14} />
+            <OmaxIcon size={15} />
           </div>
-        )} */}
+        )}
 
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col gap-2 w-full mt-1">
           {message.content && (
             <div className="flex flex-col gap-4">
               <Markdown>{message.content as string}</Markdown>
@@ -108,11 +108,11 @@ export const ThinkingMessage = () => {
           },
         )}
       >
-        {/* <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
-          <SparklesIcon size={14} />
-        </div> */}
+        <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
+          <OmaxIcon size={15} />
+        </div>
 
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col gap-2 w-full mt-3">
           <div className="flex gap-1 text-muted-foreground">
             {[0, 1, 2].map((i) => (
               <motion.div

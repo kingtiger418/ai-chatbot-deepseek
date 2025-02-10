@@ -15,7 +15,7 @@ import { useLocalStorage, useWindowSize } from "usehooks-ts";
 
 import { cn, sanitizeUIMessages } from "@/lib/utils";
 
-import { ArrowUpIcon, StopIcon } from "./icons";
+import { ArrowUpIcon, AttachIcon, StopIcon } from "./icons";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 
@@ -115,8 +115,8 @@ export function MultimodalInput({
   }, [handleSubmit, setLocalStorageInput, width]);
 
   return (
-    <div className="relative w-full flex flex-col gap-4">
-      {messages.length === 0 && (
+    <div className="relative w-full flex flex-col">
+      {/* {messages.length === 0 && (
         <div className="grid sm:grid-cols-2 gap-2 w-full">
           {suggestedActions.map((suggestedAction, index) => (
             <motion.div
@@ -145,7 +145,7 @@ export function MultimodalInput({
             </motion.div>
           ))}
         </div>
-      )}
+      )} */}
 
       <Textarea
         ref={textareaRef}
@@ -153,7 +153,7 @@ export function MultimodalInput({
         value={input}
         onChange={handleInput}
         className={cn(
-          "min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-xl !text-base bg-muted",
+          "resize-none relative bg-[#1A1A1A] rounded-2xl p-4 pb-12 h-full box-animated-border",
           className,
         )}
         rows={3}
@@ -170,6 +170,12 @@ export function MultimodalInput({
           }
         }}
       />
+
+      <div className="absolute bottom-2 h-fit size-8 p-2 m-0.5 left-2 rounded-full justify-center ring-1 shrink-0 ring-border">
+        <AttachIcon size={15} />
+      </div>
+
+
 
       {isLoading ? (
         <Button

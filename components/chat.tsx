@@ -8,6 +8,7 @@ import { Overview } from "@/components/overview";
 import { useScrollToBottom } from "@/hooks/use-scroll-to-bottom";
 import { useChat } from "ai/react";
 import { toast } from "sonner";
+import Image from "next/image";
 
 export function Chat() {
   const chatId = "001";
@@ -36,10 +37,10 @@ export function Chat() {
     useScrollToBottom<HTMLDivElement>();
 
   return (
-    <div className="flex flex-col min-w-0 h-[calc(100dvh-52px)] bg-background no-scrollbar">
+    <div className="min-h-screen text-white relative flex flex-col min-w-0 h-[calc(100dvh-52px)] overflow-hidden pt-20">
       <div
         ref={messagesContainerRef}
-        className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll overscroll-contain"
+        className="flex flex-col group inset-0 relative flex-1 overflow-y-scroll overscroll-contain px-2 py-7 mx-auto w-full md:max-w-3xl box-animated-border mb-6 gap-4"
       >
         {messages.length === 0 && <Overview />}
 
@@ -62,7 +63,7 @@ export function Chat() {
         />
       </div>
 
-      <form className="flex mx-auto px-4 bg-background pb-4 md:pb-6 gap-2 w-full md:max-w-3xl">
+      <form className="m-0 relative flex mx-auto pb-4 md:pb-10 gap-2 w-full md:max-w-3xl">
         <MultimodalInput
           chatId={chatId}
           input={input}
