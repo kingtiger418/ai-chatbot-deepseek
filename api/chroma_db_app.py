@@ -1,6 +1,5 @@
 import streamlit as st
-from qa import QAPipeline
-from ingest import process_documents
+from db.ingest import process_documents
 import os
 import shutil
 import random

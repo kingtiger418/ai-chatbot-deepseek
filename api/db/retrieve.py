@@ -6,7 +6,7 @@ from langchain_ollama import OllamaEmbeddings
 class DocumentRetriever:
     def __init__(self):
         self.embeddings = OllamaEmbeddings(model="nomic-embed-text")
-        self.persist_dir = "../chroma_db"
+        self.persist_dir = "api/chroma_db"
         
         # Create directory if it doesn't exist
         os.makedirs(self.persist_dir, exist_ok=True)
@@ -15,7 +15,7 @@ class DocumentRetriever:
         self.vector_store = Chroma(
             persist_directory=self.persist_dir,
             embedding_function=self.embeddings,
-            collection_name="main_collection"  # Fixed collection name
+            #collection_name="main_collection"  # Fixed collection name
         )
         
         # Workaround for Chroma's empty DB issue

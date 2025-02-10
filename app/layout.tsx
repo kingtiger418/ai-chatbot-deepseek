@@ -11,12 +11,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head></head>
-      <body className={cn(GeistSans.className, "antialiased dark")}>
-        <Toaster position="top-center" richColors />
-        <Navbar />
-        {children}
-      </body>
+      <body className={cn(GeistSans.className, "antialiased dark")}>{children}</body>
     </html>
+    // <html lang="en">
+    //   <head></head>
+    //   <body className={cn(GeistSans.className, "antialiased dark")}>
+    //     <Toaster position="top-center" richColors />
+    //     <Navbar />
+    //     {children}
+    //   </body>
+    // </html>
   );
 }

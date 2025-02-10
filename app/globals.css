@@ -125,3 +125,127 @@
     display: block;
     white-space: pre-wrap;
 }
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 200% 0%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.animate-gradient {
+    background-size: 200% 100%;
+    animation: gradient 3s linear infinite;
+}
+
+@keyframes border-width {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.005);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animate-border {
+    animation: border-width 2s ease-in-out infinite;
+}
+
+@keyframes glow-1 {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.15;
+    }
+
+    50% {
+        transform: translate(50%, 20%) scale(1.2);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.15;
+    }
+}
+
+@keyframes glow-2 {
+    0% {
+        transform: translate(50%, 50%) scale(1.2);
+        opacity: 0.15;
+    }
+
+    50% {
+        transform: translate(-30%, -20%) scale(1);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translate(50%, 50%) scale(1.2);
+        opacity: 0.15;
+    }
+}
+
+@keyframes glow-3 {
+    0% {
+        transform: translate(0%, -30%) scale(1);
+        opacity: 0.1;
+    }
+
+    50% {
+        transform: translate(-20%, 40%) scale(1.1);
+        opacity: 0.15;
+    }
+
+    100% {
+        transform: translate(0%, -30%) scale(1);
+        opacity: 0.1;
+    }
+}
+
+.animate-glow-1 {
+    animation: glow-1 15s ease-in-out infinite;
+    left: 25%;
+    top: 25%;
+}
+
+.animate-glow-2 {
+    animation: glow-2 18s ease-in-out infinite;
+    right: 25%;
+    bottom: 25%;
+}
+
+.animate-glow-3 {
+    animation: glow-3 20s ease-in-out infinite;
+    right: 40%;
+    top: 40%;
+}

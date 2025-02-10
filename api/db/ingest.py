@@ -55,7 +55,7 @@ def process_documents(docs_dir: str = "documents"):
     for txt_file in txt_files:
         file_path = os.path.join(docs_dir, txt_file)
         with open(file_path, "r", encoding="utf-8") as file:
-            txt_content.append(file.readlines())
+            txt_content.append(file.read())
     # Split pages into chunks
     chunks = text_splitter.create_documents(txt_content)
     all_docs.extend(chunks)
@@ -65,6 +65,6 @@ def process_documents(docs_dir: str = "documents"):
         documents=all_docs,
         embedding=embeddings,
         persist_directory="chroma_db",
-        collection_metadata={"hnsw:space": "cosine"},
-        collection_name="main_collection"
+        # collection_metadata={"hnsw:space": "cosine"},
+        # collection_name="main_collection"
     )
