@@ -1,7 +1,7 @@
 import os
 import uuid
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter, SpacyTextSplitter
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 import pandas as pd
@@ -36,7 +36,7 @@ def process_documents(docs_dir: str = "documents"):
             })
         
         # Split pages into chunks
-        chunks = text_splitter.split_documents(pages)
+        chunks = SpacyTextSplitter(chunk_size=1000).split_documents(pages)
         all_docs.extend(chunks)
 
     # Process CSV files
@@ -46,7 +46,7 @@ def process_documents(docs_dir: str = "documents"):
         df = pd.read_csv(file_path)
         content = df["content"].dropna().tolist()
         # Split pages into chunks
-        chunks = text_splitter.create_documents(content)
+        chunks = text_splitter.split_documents(content)
         all_docs.extend(chunks)
 
     # Process TXT files
@@ -55,10 +55,13 @@ def process_documents(docs_dir: str = "documents"):
     for txt_file in txt_files:
         file_path = os.path.join(docs_dir, txt_file)
         with open(file_path, "r", encoding="utf-8") as file:
-            txt_content.append(file.read())
+            txt_content=file.read()
+        chunks = text_splitter.split_text(txt_content)
+        all_docs.extend(chunks)
+            #txt_content.append(file.read())
     # Split pages into chunks
-    chunks = text_splitter.create_documents(txt_content)
-    all_docs.extend(chunks)
+    # chunks = text_splitter.split_text(txt_content)
+    # all_docs.extend(chunks)
 
     # Create/update vector store
     Chroma.from_documents(

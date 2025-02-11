@@ -28,7 +28,7 @@ class QAPipeline:
             "raw_response": response
         }
 
-    def generate_answer(self, question: str, k: int = 5) -> dict:
+    def generate_answer(self, question: str, k: int = 3) -> dict:
         """Full QA workflow with enhanced output"""
         try:
             # Retrieve documents

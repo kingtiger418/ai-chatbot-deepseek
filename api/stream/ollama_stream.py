@@ -30,6 +30,10 @@ def stream_text_usingollama(messages: List[ChatCompletionMessageParam], protocol
 
     for chunk in stream:
         print(chunk)
+        # if(chunk.message.content == "<think>"):
+        #     chunk.message.content = "<div>"
+        # if(chunk.message.content == "</think>"):
+        #     chunk.message.content = "</div>" 
         # if(chunk.message.content == "</think>"):
         #     startanswer = 1
         # else:

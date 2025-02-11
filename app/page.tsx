@@ -2,6 +2,8 @@
 
 import { Menu, Download } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import Link from 'next/link';
 
 export default function Home() {
   const router = useRouter();
@@ -40,7 +42,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }

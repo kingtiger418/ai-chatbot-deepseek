@@ -8,6 +8,7 @@ import { Markdown } from "./markdown";
 import { PreviewAttachment } from "./preview-attachment";
 import { cn } from "@/lib/utils";
 import { Weather } from "./weather";
+import { useEffect } from "react";
 
 export const PreviewMessage = ({
   message,
@@ -16,6 +17,11 @@ export const PreviewMessage = ({
   message: Message;
   isLoading: boolean;
 }) => {
+
+  useEffect(() => {
+    console.log(message.content);
+  }, [message]);
+
   return (
     <motion.div
       className="w-full mx-auto max-w-3xl px-5 group/message"
