@@ -838,8 +838,8 @@ export const SparklesIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 export const OmaxIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 205 157" strokeLinejoin="round" style={{ color: "currentcolor" }}>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M65.5 0L0.5 156.5H54.5L106.5 102L128.5 156.5H166.75H205V0H161.5L124.5 37L111.5 0H65.5ZM137 73C139 70.2 157.583 51.8333 166.75 44V156.5L137 73ZM63 102L89.5 44L97.5 68.5L63 102Z" fill="currentcolor" />
+  <svg width={size} height={size} viewBox="0 0 250 250" fill="none" style={{ color: "currentcolor" }}>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M68 50L3 206.5H57L109 152L131 206.5H169.25H207.5V50H164L127 87L114 50H68ZM139.5 123C141.5 120.2 160.083 101.833 169.25 94V206.5L139.5 123ZM65.5 152L92 94L100 118.5L65.5 152Z" fill="currentColor" />
   </svg>
 );
 

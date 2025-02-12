@@ -17,6 +17,7 @@ tavily_client = TavilyClient(api_key="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"
 @app.post("/api/chat")
 async def handle_chat_data(request: Request, protocol: str = Query('data')):
     messages = request.messages
+    print(messages)
     #context = f"\n\nTavily Answer: {tavily_client.qna_search(messages[-1].content)}"
     #prompt = f"Context:\n{context}\n\nUser Query: {messages[-1].content}\n\nResponse:"
     #messages[-1].content = prompt

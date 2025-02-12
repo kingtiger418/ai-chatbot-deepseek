@@ -24,20 +24,11 @@ def stream_text_usingollama(messages: List[ChatCompletionMessageParam], protocol
 
     stream = ollama.chat(
         messages=messages,
-        model="deepseek-r1:8b",
+        model="deepseek-r1:1.5b",
         stream=True,
     )
 
     for chunk in stream:
-        print(chunk)
-        # if(chunk.message.content == "<think>"):
-        #     chunk.message.content = "<div>"
-        # if(chunk.message.content == "</think>"):
-        #     chunk.message.content = "</div>" 
-        # if(chunk.message.content == "</think>"):
-        #     startanswer = 1
-        # else:
-        #     continue
         if chunk.message:
             # if(startanswer == 1):
             yield '0:{text}\n'.format(text=json.dumps(chunk.message.content))

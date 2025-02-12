@@ -13,7 +13,7 @@ import {
 import { toast } from "sonner";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
 
-import { cn, sanitizeUIMessages } from "@/lib/utils";
+import { cn, removeThinkMessages, sanitizeUIMessages } from "@/lib/utils";
 
 import { ArrowUpIcon, AttachIcon, StopIcon } from "./icons";
 import { Button } from "./ui/button";
@@ -149,7 +149,7 @@ export function MultimodalInput({
 
       <Textarea
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="Type your messages here"
         value={input}
         onChange={handleInput}
         className={cn(

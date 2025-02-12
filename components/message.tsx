@@ -8,7 +8,7 @@ import { Markdown } from "./markdown";
 import { PreviewAttachment } from "./preview-attachment";
 import { cn } from "@/lib/utils";
 import { Weather } from "./weather";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const PreviewMessage = ({
   message,
@@ -17,9 +17,26 @@ export const PreviewMessage = ({
   message: Message;
   isLoading: boolean;
 }) => {
+  const [think, setThink] = useState("");
+  const [content, setContent] = useState("");
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
-    console.log(message.content);
+    const messageContent = message.content as string;
+    if (message.role === "assistant") {
+      var startIndex = messageContent.indexOf("<think>");
+      if (startIndex != -1) startIndex = startIndex + 7;
+      if (messageContent.indexOf("</think>") == -1) {
+        setThink(messageContent.substring(startIndex));
+        setContent("");
+      } else {
+        setThink(messageContent.substring(startIndex, messageContent.indexOf("</think>")));
+        setContent(messageContent.substring(messageContent.indexOf("</think>") + 8))
+      }
+    } else {
+      setThink("");
+      setContent(messageContent);
+    }
   }, [message]);
 
   return (
@@ -32,19 +49,26 @@ export const PreviewMessage = ({
     >
       <div
         className={cn(
-          "group-data-[role=user]/message:bg-primary group-data-[role=user]/message:text-primary-foreground flex gap-4 group-data-[role=user]/message:px-3 w-full group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:py-3 rounded-xl",
+          "group-data-[role=user]/message:bg-primary group-data-[role=user]/message:text-primary-foreground group-data-[role=user]/message:px-5 group-data-[role=user]/message:pb-2 group-data-[role=user]/message:pt-1 group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl flex gap-4 w-full rounded-3xl",
         )}
       >
         {message.role === "assistant" && (
-          <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
-            <OmaxIcon size={15} />
+          <div className="size-8 flex items-center rounded-full justify-center shrink-0">
+            <OmaxIcon size={22} />
           </div>
         )}
 
-        <div className="flex flex-col gap-2 w-full mt-1">
-          {message.content && (
-            <div className="flex flex-col gap-4">
-              <Markdown>{message.content as string}</Markdown>
+        <div className="flex flex-col gap-2 w-full mt-2">
+          {
+            think && (
+              <div className="text-sm border-l-2 border-[#444444] pl-2 text-gray-400 text-justify">
+                {think}
+              </div>
+            )
+          }
+          {content && (
+            <div className="flex flex-col gap-4 text-justify">
+              <Markdown>{content}</Markdown>
             </div>
           )}
 
@@ -114,11 +138,11 @@ export const ThinkingMessage = () => {
           },
         )}
       >
-        <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
-          <OmaxIcon size={15} />
+        <div className="size-8 flex items-center rounded-full justify-center shrink-0">
+          <OmaxIcon size={22} />
         </div>
 
-        <div className="flex flex-col gap-2 w-full mt-3">
+        <div className="flex flex-col gap-2 w-full mt-4">
           <div className="flex gap-1 text-muted-foreground">
             {[0, 1, 2].map((i) => (
               <motion.div
