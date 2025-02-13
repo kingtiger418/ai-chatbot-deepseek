@@ -37,10 +37,10 @@ export function Chat() {
     useScrollToBottom<HTMLDivElement>();
 
   return (
-    <div className="min-h-screen text-white relative flex flex-col min-w-0 h-[calc(100dvh-52px)] overflow-hidden pt-20">
+    <div className="min-h-screen text-white relative flex flex-col min-w-0 h-[calc(100dvh-52px)] overflow-hidden pt-20 px-6 md:px-auto">
       <div
         ref={messagesContainerRef}
-        className="flex flex-col group inset-0 relative flex-1 overflow-y-scroll overscroll-contain px-2 py-7 mx-auto w-full md:max-w-2xl box-animated-border mb-6 gap-4"
+        className="flex flex-col group inset-0 relative flex-1 overflow-y-scroll overscroll-contain px-2 py-7 mx-auto w-full md:max-w-3xl box-animated-border mb-6 gap-4"
       >
         {messages.length === 0 && <Overview />}
 

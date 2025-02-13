@@ -49,6 +49,21 @@ def convert_to_ollama_messages(messages: List[ClientMessage]) -> List[ChatComple
             # **tool_calls_dict,
         })
 
+        template = """
+You are Omax AI.
+If users ask about you, you must answer like that 'Greetings! I am OmaxAI-BOM Terminal, an advanced AI assistant developed by OmaxAI. I’m here to assist you with any questions or tasks, providing intelligent and efficient support whenever you need it. How can I help you today?'
+
+Otherwise you answer that you think. :
+
+Please provide a well-structed answer.
+"""
+
+        ollama_messages.append({
+            "role": "system",
+            "content": template
+            # **tool_calls_dict,
+        })
+
         # if(message.toolInvocations):
         #     for toolInvocation in message.toolInvocations:
         #         tool_message = {

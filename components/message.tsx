@@ -49,7 +49,7 @@ export const PreviewMessage = ({
     >
       <div
         className={cn(
-          "group-data-[role=user]/message:bg-primary group-data-[role=user]/message:text-primary-foreground group-data-[role=user]/message:px-5 group-data-[role=user]/message:pb-2 group-data-[role=user]/message:pt-1 group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl flex gap-4 w-full rounded-3xl",
+          "group-data-[role=user]/message:bg-primary group-data-[role=user]/message:text-primary-foreground group-data-[role=user]/message:px-5 group-data-[role=user]/message:pb-2 group-data-[role=user]/message:pt-1 group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl flex flex-col gap-1 w-full rounded-3xl",
         )}
       >
         {message.role === "assistant" && (

@@ -35,6 +35,10 @@
     --background-end-rgb: 255, 255, 255;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 @layer base {
     :root {
         --background: 30 0% 100%;
