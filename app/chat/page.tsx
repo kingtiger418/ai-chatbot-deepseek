@@ -43,7 +43,7 @@ export default function Page() {
       <div className="absolute z-10 px-3 py-6 flex justify-between items-center bg-transparent gap-4">
 
         <button className="relative rounded-lg transition-colors pl-1" onClick={(e) => setIsOpen(true)}>
-          <Menu className="w-8 h-8" />
+          <Menu className="w-7 h-7" />
         </button>
 
         <div className="flex items-center gap-2">
@@ -58,7 +58,7 @@ export default function Page() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}>
-            <button className="flex items-right p-2 hover:bg-white/10 rounded-lg transition-colors text-primary-foreground gap-4"
+            <button className="flex items-right p-2 hover:bg-white/10 rounded-lg transition-colors text-primary-foreground gap-4 items-center"
               onClick={(e) => {
                 let len = messages.length;
                 if (len > 0) {
