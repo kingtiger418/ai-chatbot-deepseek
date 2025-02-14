@@ -122,7 +122,7 @@ export function MultimodalInput({
   }, [handleSubmit, setLocalStorageInput, width]);
 
   return (
-    <div className="relative w-full flex flex-col h-32 bg-[#1A1A1A] rounded-2xl box-animated-border ">
+    <div className="relative w-full flex flex-col bg-[#1A1A1A] rounded-2xl box-animated-border gap-2">
       {/* {messages.length === 0 && (
         <div className="grid sm:grid-cols-2 gap-2 w-full">
           {suggestedActions.map((suggestedAction, index) => (
@@ -160,7 +160,7 @@ export function MultimodalInput({
         value={input}
         onChange={handleInput}
         className={cn(
-          "resize-none p-3 overflow-y-scroll border-0 focus:outline-none focus:ring-0 resize-none border-transparent focus:border-transparent",
+          "relative resize-none p-3 overflow-y-scroll border-0 focus:outline-none focus:ring-0 resize-none border-transparent focus:border-transparent h-32",
         )}
         rows={3}
         autoFocus
@@ -178,39 +178,41 @@ export function MultimodalInput({
         }}
       />
 
-      <div className="relative bottom-2 h-fit size-8 p-2 m-0.5 mt-3 left-2 rounded-full justify-center ring-1 shrink-0 ring-border">
-        <AttachIcon size={15} />
+      <div className="relative w-full flex gap-2 pb-2 px-3 justify-between">
+        {/* <div className="rounded-full justify-center ring-1 shrink-0 ring-border size-8 flex items-center">
+          <AttachIcon size={15} />
+        </div> */}
+
+        <div className={"text-sm text-primary-foreground h-8 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border flex items-center px-4 hover:cursor-pointer " + (useThink === "think" ? " bg-primary" : "")} onClick={(e) => setUseThink((useThink === "think" ? "" : "think"))}>
+          Mention ThinkX
+        </div>
+
+
+        {isLoading ? (
+          <Button
+            className="rounded-full p-1.5 h-fit bottom-2 right-2 m-0.5 border dark:border-zinc-600"
+            onClick={(event) => {
+              event.preventDefault();
+              stop();
+              setMessages((messages) => sanitizeUIMessages(messages));
+            }}
+          >
+            <StopIcon size={14} />
+          </Button>
+        ) : (
+          <Button
+            className="rounded-full p-1.5 h-fit bottom-2 right-2 m-0.5 border dark:border-zinc-600 right"
+            onClick={(event) => {
+              event.preventDefault();
+              addStateMessage({ id: chatId, title: input })
+              submitForm();
+            }}
+            disabled={input.length === 0}
+          >
+            <ArrowUpIcon size={14} />
+          </Button>
+        )}
       </div>
-
-      <div className={"absolute bottom-2 text-primary-foreground h-fit ml-12  py-1 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border px-4 " + (useThink === "think" ? "bg-primary" : "")} onClick={(e) => setUseThink((useThink === "think" ? "" : "think"))}>
-        Think
-      </div>
-
-
-      {isLoading ? (
-        <Button
-          className="rounded-full p-1.5 h-fit absolute bottom-2 right-2 m-0.5 border dark:border-zinc-600"
-          onClick={(event) => {
-            event.preventDefault();
-            stop();
-            setMessages((messages) => sanitizeUIMessages(messages));
-          }}
-        >
-          <StopIcon size={14} />
-        </Button>
-      ) : (
-        <Button
-          className="rounded-full p-1.5 h-fit absolute bottom-2 right-2 m-0.5 border dark:border-zinc-600"
-          onClick={(event) => {
-            event.preventDefault();
-            addStateMessage({ id: chatId, title: input })
-            submitForm();
-          }}
-          disabled={input.length === 0}
-        >
-          <ArrowUpIcon size={14} />
-        </Button>
-      )}
-    </div>
+    </div >
   );
 }

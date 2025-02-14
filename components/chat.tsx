@@ -89,13 +89,8 @@ export function Chat({ addStateMessage, chatId = 1, title, setIsOpen }: {
         className="flex flex-col px-2  pt-3 mx-auto w-full md:max-w-3xl box-animated-border mb-6 gap-4 overflow-hidden relative h-[calc(100dvh-52px)] "
       >
         <div className="flex flex-col gap-1 w-full">
-          <div className="w-full relative">
-            <div className="w-full absolute text-center">
-              {title}
-            </div>
-            <button className="relative rounded-lg transition-colors pl-1" onClick={(e) => setIsOpen(true)}>
-              <Menu className="w-6 h-6" />
-            </button>
+          <div className="w-full relative text-center">
+            {title}
           </div>
           <div className="w-full h-[1px] bg-primary"></div>
         </div>
