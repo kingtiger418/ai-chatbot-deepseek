@@ -122,7 +122,7 @@ export function MultimodalInput({
   }, [handleSubmit, setLocalStorageInput, width]);
 
   return (
-    <div className="relative w-full flex flex-col bg-[#1A1A1A] rounded-2xl box-animated-border gap-2">
+    <div className="relative w-full flex flex-col bg-[#1A1A1A] rounded-2xl box-animated-border gap-2 h-32 ">
       {/* {messages.length === 0 && (
         <div className="grid sm:grid-cols-2 gap-2 w-full">
           {suggestedActions.map((suggestedAction, index) => (
@@ -160,7 +160,7 @@ export function MultimodalInput({
         value={input}
         onChange={handleInput}
         className={cn(
-          "relative resize-none p-3 overflow-y-scroll border-0 focus:outline-none focus:ring-0 resize-none border-transparent focus:border-transparent h-32",
+          "relative resize-none p-3 overflow-y-scroll border-0 focus:outline-none focus:ring-0 resize-none border-transparent focus:border-transparent h-fit",
         )}
         rows={3}
         autoFocus
