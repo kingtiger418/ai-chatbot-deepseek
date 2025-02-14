@@ -20,8 +20,11 @@ __pycache__
 # production
 /build
 
+/api/chroma_db
+/api/documents
 /chroma_db
 /documents
+.langchain.db
 
 # misc
 .DS_Store

@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 export const PreviewMessage = ({
   message,
 }: {
-  chatId: string;
+  chatId: number;
   message: Message;
   isLoading: boolean;
 }) => {
@@ -25,13 +25,18 @@ export const PreviewMessage = ({
     const messageContent = message.content as string;
     if (message.role === "assistant") {
       var startIndex = messageContent.indexOf("<think>");
-      if (startIndex != -1) startIndex = startIndex + 7;
-      if (messageContent.indexOf("</think>") == -1) {
-        setThink(messageContent.substring(startIndex));
-        setContent("");
+      if (startIndex != -1) {
+        startIndex = startIndex + 7;
+        if (messageContent.indexOf("</think>") == -1) {
+          setThink(messageContent.substring(startIndex));
+          setContent("");
+        } else {
+          setThink(messageContent.substring(startIndex, messageContent.indexOf("</think>")));
+          setContent(messageContent.substring(messageContent.indexOf("</think>") + 8))
+        }
       } else {
-        setThink(messageContent.substring(startIndex, messageContent.indexOf("</think>")));
-        setContent(messageContent.substring(messageContent.indexOf("</think>") + 8))
+        setThink("");
+        setContent(messageContent);
       }
     } else {
       setThink("");
@@ -41,7 +46,7 @@ export const PreviewMessage = ({
 
   return (
     <motion.div
-      className="w-full mx-auto max-w-3xl px-5 group/message"
+      className="w-full mx-auto max-w-3xl px-2 group/message"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
@@ -125,7 +130,7 @@ export const ThinkingMessage = () => {
 
   return (
     <motion.div
-      className="w-full mx-auto max-w-3xl px-4 group/message"
+      className="w-full mx-auto max-w-3xl px-2 group/message"
       initial={{ y: 5, opacity: 0 }}
       animate={{ y: 0, opacity: 1, transition: { delay: 1 } }}
       data-role={role}

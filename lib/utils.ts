@@ -2,6 +2,16 @@ import { Message } from "ai";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+export interface StateMessage {
+  id: number,
+  title: string
+}
+
+export interface StateMessageList {
+  id: number,
+  stateMessages: Message[]
+}
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

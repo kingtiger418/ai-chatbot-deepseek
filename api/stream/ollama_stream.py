@@ -11,7 +11,10 @@ available_tools = {
     "get_current_weather": get_current_weather,
 }
 
-def stream_text_usingollama(messages: List[ChatCompletionMessageParam], protocol: str = 'data'):
+modelnonthink = "deepseek-v2:16b"
+modelthink = "deepseek-r1:1.5b"
+
+def stream_text_usingollama(messages: List[ChatCompletionMessageParam], protocol: str = 'data', think : bool = False):
     draft_tool_calls = []
     draft_tool_calls_index = -1
     startanswer = 0
@@ -22,13 +25,24 @@ def stream_text_usingollama(messages: List[ChatCompletionMessageParam], protocol
     #     - A search engine optimized for comprehensive, accurate, and trusted results. If users need to answer questions about current events., say shortly "tavily"""
     # #messages[-1].content = PROMPT_TEMPLATE.format(context=messages[-1].content)
 
-    stream = ollama.chat(
-        messages=messages,
-        model="deepseek-r1:1.5b",
-        stream=True,
-    )
+    if think:
+        model = modelthink
+    else:
+        model = modelnonthink
+
+    try:
+        stream = ollama.chat(
+            messages=messages,
+            model=model,
+            stream=True,
+        )
+    except ollama.ResponseError as e:
+        if e.status_code == 404:
+            ollama.pull(model)
+        pass
 
     for chunk in stream:
+        #print(chunk)
         if chunk.message:
             # if(startanswer == 1):
             yield '0:{text}\n'.format(text=json.dumps(chunk.message.content))
@@ -104,7 +118,7 @@ def message_to_rag(message):
     return prompt
 
 
-async def get_ollama_stream_instance(messages, protocol):
+async def get_ollama_stream_instance(messages, protocol, think):
     #print("message: " + str(messages))
 
     # PROMPT_TEMPLATE = """answer this question:
@@ -113,9 +127,9 @@ async def get_ollama_stream_instance(messages, protocol):
     #     - A search engine optimized for comprehensive, accurate, and trusted results. If users need to answer questions about current events or current weather or current data, generate only "Ask Tavily"""
     # messages[-1].content = PROMPT_TEMPLATE.format(context=messages[-1].content)
     messages[-1].content = message_to_rag(messages[-1].content)
-    print("///////////////////////////////////////")
-    print(messages[-1].content)
-    print("//////////////////////////////////////")
+    #print("///////////////////////////////////////")
+    #print(messages[-1].content)
+    #print("//////////////////////////////////////")
     ollama_messages = convert_to_ollama_messages(messages)
-    response = StreamingResponse(stream_text_usingollama(ollama_messages, protocol))
+    response = StreamingResponse(stream_text_usingollama(ollama_messages, protocol, think))
     return response

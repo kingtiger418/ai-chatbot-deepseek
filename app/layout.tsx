@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/navbar";
+import { Sidebar } from "@/components/sidebar";
 
 export default function RootLayout({
   children,
@@ -26,9 +27,11 @@ export default function RootLayout({
             <div className="absolute w-[450px] h-[450px] bg-[#C1FF00] opacity-[0.05] blur-[120px] animate-glow-3" />
           </div>
 
-          < Toaster position="top-center" richColors />
+          <Toaster position="top-center" richColors />
           <Navbar />
           {children}
+
+          {/* <Sidebar /> */}
         </div>
       </body>
     </html >

@@ -3,6 +3,10 @@ import os
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 
+from langchain.globals import set_llm_cache  #JNH#
+from langchain_community.cache import SQLiteCache #JNH#
+set_llm_cache(SQLiteCache(database_path=".langchain.db")) #JNH#
+
 class DocumentRetriever:
     def __init__(self):
         self.embeddings = OllamaEmbeddings(model="nomic-embed-text")

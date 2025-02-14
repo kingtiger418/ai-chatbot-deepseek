@@ -9,11 +9,12 @@ import {
   useCallback,
   type Dispatch,
   type SetStateAction,
+  useState,
 } from "react";
 import { toast } from "sonner";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
 
-import { cn, removeThinkMessages, sanitizeUIMessages } from "@/lib/utils";
+import { cn, removeThinkMessages, sanitizeUIMessages, StateMessage } from "@/lib/utils";
 
 import { ArrowUpIcon, AttachIcon, StopIcon } from "./icons";
 import { Button } from "./ui/button";
@@ -43,8 +44,11 @@ export function MultimodalInput({
   append,
   handleSubmit,
   className,
+  addStateMessage,
+  useThink,
+  setUseThink
 }: {
-  chatId: string;
+  chatId: number;
   input: string;
   setInput: (value: string) => void;
   isLoading: boolean;
@@ -62,6 +66,9 @@ export function MultimodalInput({
     chatRequestOptions?: ChatRequestOptions,
   ) => void;
   className?: string;
+  addStateMessage: (stateMessage: StateMessage) => void;
+  useThink: string;
+  setUseThink: (think: string) => void;
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
@@ -115,7 +122,7 @@ export function MultimodalInput({
   }, [handleSubmit, setLocalStorageInput, width]);
 
   return (
-    <div className="relative w-full flex flex-col">
+    <div className="relative w-full flex flex-col h-32 bg-[#1A1A1A] rounded-2xl box-animated-border ">
       {/* {messages.length === 0 && (
         <div className="grid sm:grid-cols-2 gap-2 w-full">
           {suggestedActions.map((suggestedAction, index) => (
@@ -153,8 +160,7 @@ export function MultimodalInput({
         value={input}
         onChange={handleInput}
         className={cn(
-          "resize-none relative bg-[#1A1A1A] rounded-2xl p-4 pb-12 h-full box-animated-border",
-          className,
+          "resize-none p-3 overflow-y-scroll border-0 focus:outline-none focus:ring-0 resize-none border-transparent focus:border-transparent",
         )}
         rows={3}
         autoFocus
@@ -165,16 +171,20 @@ export function MultimodalInput({
             if (isLoading) {
               toast.error("Please wait for the model to finish its response!");
             } else {
+              addStateMessage({ id: chatId, title: input })
               submitForm();
             }
           }
         }}
       />
 
-      <div className="absolute bottom-2 h-fit size-8 p-2 m-0.5 left-2 rounded-full justify-center ring-1 shrink-0 ring-border">
+      <div className="relative bottom-2 h-fit size-8 p-2 m-0.5 mt-3 left-2 rounded-full justify-center ring-1 shrink-0 ring-border">
         <AttachIcon size={15} />
       </div>
 
+      <div className={"absolute bottom-2 text-primary-foreground h-fit ml-12  py-1 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border px-4 " + (useThink === "think" ? "bg-primary" : "")} onClick={(e) => setUseThink((useThink === "think" ? "" : "think"))}>
+        Think
+      </div>
 
 
       {isLoading ? (
@@ -193,6 +203,7 @@ export function MultimodalInput({
           className="rounded-full p-1.5 h-fit absolute bottom-2 right-2 m-0.5 border dark:border-zinc-600"
           onClick={(event) => {
             event.preventDefault();
+            addStateMessage({ id: chatId, title: input })
             submitForm();
           }}
           disabled={input.length === 0}

@@ -24,3 +24,4 @@ class ClientMessage(BaseModel):
 
 class Request(BaseModel):
     messages: List[ClientMessage]
+    requestBody: str
