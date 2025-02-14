@@ -16,7 +16,7 @@ import { useLocalStorage, useWindowSize } from "usehooks-ts";
 
 import { cn, removeThinkMessages, sanitizeUIMessages, StateMessage } from "@/lib/utils";
 
-import { ArrowUpIcon, AttachIcon, StopIcon } from "./icons";
+import { ArrowUpIcon, AttachIcon, StopIcon, ThinkIcon } from "./icons";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 
@@ -183,8 +183,8 @@ export function MultimodalInput({
           <AttachIcon size={15} />
         </div> */}
 
-        <div className={"text-sm text-primary-foreground h-8 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border flex items-center px-4 hover:cursor-pointer " + (useThink === "think" ? " bg-primary" : "")} onClick={(e) => setUseThink((useThink === "think" ? "" : "think"))}>
-          Mention ThinkX
+        <div className={"text-sm text-primary-foreground h-8 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border flex gap-1 items-center pl-3 pr-4 text-sm hover:cursor-pointer " + (useThink === "think" ? " bg-primary" : "")} onClick={(e) => setUseThink((useThink === "think" ? "" : "think"))}>
+          <ThinkIcon size={15} /> ThinkX
         </div>
 
 

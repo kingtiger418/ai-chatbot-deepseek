@@ -34,7 +34,7 @@ export function Chat({ addStateMessage, chatId = 1, title, setIsOpen }: {
   } = useChat({
     maxSteps: 4,
     experimental_prepareRequestBody: ({ messages }) => {
-      return { messages: [messages.at(messages.length - 1), messages.at(messages.length - 2)], requestBody: useThink };
+      return { messages: [messages.at(messages.length - 2), messages.at(messages.length - 1)], requestBody: useThink };
     },
     onError: (error) => {
       if (error.message.includes("Too many requests")) {

@@ -58,11 +58,11 @@ Otherwise you answer that you think. :
 Please provide a well-structed answer.
 """
 
-        ollama_messages.append({
-            "role": "system",
-            "content": template
-            # **tool_calls_dict,
-        })
+    ollama_messages.append({
+        "role": "system",
+        "content": template
+        # **tool_calls_dict,
+    })
 
         # if(message.toolInvocations):
         #     for toolInvocation in message.toolInvocations:

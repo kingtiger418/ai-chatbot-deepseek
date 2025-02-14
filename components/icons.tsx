@@ -850,20 +850,25 @@ export const OmaxMarkIcon = ({ width = 780, height = 157 }: { width?: number, he
 );
 
 export const OmaxIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 250 250" fill="none" style={{ color: "currentcolor" }}>
+  <svg width={size} height={size} viewBox="0 0 250 250" fill="none" style={{ color: "currentColor" }}>
     <path fillRule="evenodd" clipRule="evenodd" d="M68 50L3 206.5H57L109 152L131 206.5H169.25H207.5V50H164L127 87L114 50H68ZM139.5 123C141.5 120.2 160.083 101.833 169.25 94V206.5L139.5 123ZM65.5 152L92 94L100 118.5L65.5 152Z" fill="currentColor" />
   </svg>
 );
 
+export const ThinkIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} fill="none" viewBox="0 0 24 24" style={{ color: "currentColor" }}><path d="m12 3c-3.585 0-6.5 2.9225-6.5 6.5385 0 2.2826 1.162 4.2913 2.9248 5.4615h7.1504c1.7628-1.1702 2.9248-3.1789 2.9248-5.4615 0-3.6159-2.915-6.5385-6.5-6.5385zm2.8653 14h-5.7306v1h5.7306v-1zm-1.1329 3h-3.4648c0.3458 0.5978 0.9921 1 1.7324 1s1.3866-0.4022 1.7324-1zm-5.6064 0c0.44403 1.7252 2.0101 3 3.874 3s3.43-1.2748 3.874-3c0.5483-0.0047 0.9913-0.4506 0.9913-1v-2.4593c2.1969-1.5431 3.6347-4.1045 3.6347-7.0022 0-4.7108-3.8008-8.5385-8.5-8.5385-4.6992 0-8.5 3.8276-8.5 8.5385 0 2.8977 1.4378 5.4591 3.6347 7.0022v2.4593c0 0.5494 0.44301 0.9953 0.99128 1z" clipRule="evenodd" fill="currentColor" fillRule="evenodd"></path></svg>
+);
+
+
 export const AttachIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 14 20" strokeLinejoin="round" style={{ color: "currentcolor" }}>
+  <svg width={size} height={size} viewBox="0 0 14 20" strokeLinejoin="round" style={{ color: "currentColor" }}>
     <path d="M7 20c-1.856-.002-3.635-.7-4.947-1.94C.74 16.819.003 15.137 0 13.383V4.828a4.536 4.536 0 0 1 .365-1.843 4.75 4.75 0 0 1 1.087-1.567A5.065 5.065 0 0 1 3.096.368a5.293 5.293 0 0 1 3.888 0c.616.244 1.174.6 1.643 1.05.469.45.839.982 1.088 1.567.25.586.373 1.212.364 1.843v8.555a2.837 2.837 0 0 1-.92 2.027A3.174 3.174 0 0 1 7 16.245c-.807 0-1.582-.3-2.158-.835a2.837 2.837 0 0 1-.92-2.027v-6.22a1.119 1.119 0 1 1 2.237 0v6.22a.777.777 0 0 0 .256.547.868.868 0 0 0 .585.224c.219 0 .429-.08.586-.224a.777.777 0 0 0 .256-.546V4.828A2.522 2.522 0 0 0 7.643 3.8a2.64 2.64 0 0 0-.604-.876 2.816 2.816 0 0 0-.915-.587 2.943 2.943 0 0 0-2.168 0 2.816 2.816 0 0 0-.916.587 2.64 2.64 0 0 0-.604.876 2.522 2.522 0 0 0-.198 1.028v8.555c0 1.194.501 2.339 1.394 3.183A4.906 4.906 0 0 0 7 17.885a4.906 4.906 0 0 0 3.367-1.319 4.382 4.382 0 0 0 1.395-3.183v-6.22a1.119 1.119 0 0 1 2.237 0v6.22c-.002 1.754-.74 3.436-2.052 4.677C10.635 19.3 8.856 19.998 7 20z" fill="currentColor">
     </path>
   </svg>
 );
 
 export const SearchIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 20 20" strokeLinejoin="round" style={{ color: "currentcolor" }}>
+  <svg width={size} height={size} viewBox="0 0 20 20" strokeLinejoin="round" style={{ color: "currentColor" }}>
     <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.8"></circle>
     <path d="M10 1c1.657 0 3 4.03 3 9s-1.343 9-3 9M10 19c-1.657 0-3-4.03-3-9s1.343-9 3-9M1 10h18" stroke="currentColor" stroke-width="1.8"></path>
   </svg>
