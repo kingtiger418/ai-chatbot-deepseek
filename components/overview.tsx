@@ -18,7 +18,7 @@ export const Overview = () => {
           <MessageIcon size={32} />
         </p>
         <p>
-          There is no message. <br />Start by asking a question or typing a message.
+          There is no message.
         </p>
       </div>
     </motion.div>
