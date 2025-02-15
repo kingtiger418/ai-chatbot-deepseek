@@ -16,9 +16,11 @@ import { useLocalStorage, useWindowSize } from "usehooks-ts";
 
 import { cn, removeThinkMessages, sanitizeUIMessages, StateMessage } from "@/lib/utils";
 
-import { ArrowUpIcon, AttachIcon, StopIcon, ThinkIcon } from "./icons";
+import { ArrowUpIcon, AttachIcon, SearchIcon, StopIcon, ThinkIcon } from "./icons";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
+
+import { GiAtom } from "react-icons/gi";
 
 const suggestedActions = [
   {
@@ -179,39 +181,47 @@ export function MultimodalInput({
       />
 
       <div className="relative w-full flex gap-2 pb-2 px-3 justify-between">
-        {/* <div className="rounded-full justify-center ring-1 shrink-0 ring-border size-8 flex items-center">
-          <AttachIcon size={15} />
-        </div> */}
+        <div className="flex gap-2">
+          <div className={"text-xs text-primary-foreground h-8 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border flex gap-1 items-center pl-3 pr-4 text-sm hover:cursor-pointer"}>
+            <SearchIcon /> Search
+          </div>
 
-        <div className={"text-sm text-primary-foreground h-8 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border flex gap-1 items-center pl-3 pr-4 text-sm hover:cursor-pointer " + (useThink === "think" ? " bg-primary" : "")} onClick={(e) => setUseThink((useThink === "think" ? "" : "think"))}>
-          <ThinkIcon size={15} /> ThinkX
+          <div className={"text-xs text-primary-foreground h-8 group/message justify-center ring-1 rounded-3xl shrink-0 ring-border flex gap-1 items-center pl-3 pr-4 text-sm hover:cursor-pointer " + (useThink === "think" ? " bg-primary" : "")} onClick={(e) => setUseThink((useThink === "think" ? "" : "think"))}>
+            {/* <ThinkIcon size={15} /> IGT */}
+            <GiAtom className="text-base" /> IGT
+          </div>
         </div>
 
+        <div className="flex gap-2">
+          <div className="rounded-full justify-center ring-1 shrink-0 ring-border size-8 flex items-center">
+            <AttachIcon size={15} />
+          </div>
 
-        {isLoading ? (
-          <Button
-            className="rounded-full p-1.5 h-fit bottom-2 right-2 m-0.5 border dark:border-zinc-600"
-            onClick={(event) => {
-              event.preventDefault();
-              stop();
-              setMessages((messages) => sanitizeUIMessages(messages));
-            }}
-          >
-            <StopIcon size={14} />
-          </Button>
-        ) : (
-          <Button
-            className="rounded-full p-1.5 h-fit bottom-2 right-2 m-0.5 border dark:border-zinc-600 right"
-            onClick={(event) => {
-              event.preventDefault();
-              addStateMessage({ id: chatId, title: input })
-              submitForm();
-            }}
-            disabled={input.length === 0}
-          >
-            <ArrowUpIcon size={14} />
-          </Button>
-        )}
+          {isLoading ? (
+            <Button
+              className="rounded-full p-1.5 h-fit bottom-2 right-2 m-0.5 border dark:border-zinc-600"
+              onClick={(event) => {
+                event.preventDefault();
+                stop();
+                setMessages((messages) => sanitizeUIMessages(messages));
+              }}
+            >
+              <StopIcon size={14} />
+            </Button>
+          ) : (
+            <Button
+              className="rounded-full p-1.5 h-fit bottom-2 right-2 m-0.5 border dark:border-zinc-600 right"
+              onClick={(event) => {
+                event.preventDefault();
+                addStateMessage({ id: chatId, title: input })
+                submitForm();
+              }}
+              disabled={input.length === 0}
+            >
+              <ArrowUpIcon size={14} />
+            </Button>
+          )}
+        </div>
       </div>
     </div >
   );
