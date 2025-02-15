@@ -19,7 +19,7 @@ export default function Home() {
           <OmaxMarkIcon width={170} height={40} />
         </Link>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-center max-w-5xl mx-auto leading-tight mb-8 mt:mb-16 mt-32 md:mt-60">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-center max-w-5xl mx-auto leading-tight mb-8 mt:mb-20 mt-32 md:mt-60">
           Shaping an intelligent future with innovation.
         </h1>
 
