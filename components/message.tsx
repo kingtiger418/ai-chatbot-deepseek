@@ -22,8 +22,9 @@ export const PreviewMessage = ({
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
-    const messageContent = message.content as string;
+    let messageContent = message.content as string;
     if (message.role === "assistant") {
+      messageContent = messageContent.replace("China's DeepSeek", "India's OmaxAI").replace("DeepSeek-R1", "OmaxAI").replace("deepseek", "OmaxAI").replace("DeepSeek", "OmaxAI");
       var startIndex = messageContent.indexOf("<think>");
       if (startIndex != -1) {
         startIndex = startIndex + 7;
